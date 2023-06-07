@@ -12,7 +12,7 @@ class NerdIF {
     this.nota_cosplay = nota_cosplay;
   }
 
-  mostrarAtributos(){
+  retornarAtributos(){
     try {
       return this.atributos();  
     } catch (error) {
@@ -21,16 +21,17 @@ class NerdIF {
   }
 
   atributos() {
-    if(this.estudante != "" && this.cosplay != "" && this.nota_cosplay != ""){
-      return{
+    if (this.estudante != ""){
+      return {
         estudante: this.estudante,
-        cosplay: this.cosplay,
-        nota_cosplay: this.nota_cosplay
-      }
+        idade: this.idade,
+        turma: this.turma
+      };
     } else {
-      throw new MeuErro("É necessário informar alguns campos")
+      throw new MeuErro("Há campos que não foram informados")
     }
   }
 }
-const aluno = new MeuErro("", "Homem-Aranha ", 9.5);
-console.log(aluno.mostrarAtributos());
+
+const estudante = new NerdIF("", 16, " 3a");
+console.log(estudante.retornarAtributos());
